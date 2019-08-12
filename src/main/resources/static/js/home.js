@@ -9,7 +9,7 @@ function init(){
         type: 'GET',
         url: '/stock',
         dataType: 'json',
-        data:{},
+        data:{start:"20160104",end:"20160106"},
         success: function (data) {
             $.each(data, function(i, item) {
                 body += "<tr>";
@@ -33,3 +33,4 @@ function init(){
         },
     });
 }
+
