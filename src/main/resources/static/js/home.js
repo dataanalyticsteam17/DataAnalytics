@@ -20,10 +20,9 @@ function init(){
                 body += "<td>"+item.low+"</td>";
                 body += "<td>"+item.close+"</td>";
                 body += "<td>"+item.volume+"</td>";
-                body += "<td>"+item.splitFactor+"</td>";
+                body += "<td>"+item.split_factor+"</td>";
                 body += "<td>"+item.earnings+"</td>";
                 body += "<td>"+item.dividends+"</td>";
-                body += "<td>"+item.extrapolation+"</td>";
                 body += "</tr>";
             });
             $("#stock-list").append(body);

@@ -24,7 +24,7 @@ public class TestController {
     @RequestMapping("/stock")
     @ResponseBody
     public  ArrayList<Record> getStocks() {
-        String sy ="a", start= "20160104",end ="20160423";
+        String sy ="a", start= "20160104",end ="20160106";
         ArrayList<Record> stocks = new ArrayList<Record>();
         System.out.println(Readdata. acessDate(start,end,sy).toString());
         return Readdata. acessDate(start,end,sy);

@@ -54,7 +54,7 @@ public class Readdata {
 
         while (start.before(end)) {
             String reStr = sdf.format(start);
-            String filepath = "C:\\Users\\Jiawei\\Desktop\\DataAnalytics\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
+            String filepath = "C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
                     + "allstocks_" + reStr + "\\table_" + symbol + ".csv";
             File isfile = new File(filepath);
             if (isfile.exists()) {
