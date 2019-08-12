@@ -1,6 +1,7 @@
 package com.citi.dataanalytics.entity;
 
 public class Stock {
+    int id;
     String date;
     String time;
     double open;
@@ -25,6 +26,29 @@ public class Stock {
         this.earnings = earnings;
         this.dividends = dividends;
         this.extrapolation = extrapolation;
+    }
+
+    public Stock(int id, String date, String time, double open, double high, double low, double close, int volume, int splitFactor, int earnings, int dividends, int extrapolation) {
+        this.id = id;
+        this.date = date;
+        this.time = time;
+        this.open = open;
+        this.high = high;
+        this.low = low;
+        this.close = close;
+        this.volume = volume;
+        this.splitFactor = splitFactor;
+        this.earnings = earnings;
+        this.dividends = dividends;
+        this.extrapolation = extrapolation;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDate() {
