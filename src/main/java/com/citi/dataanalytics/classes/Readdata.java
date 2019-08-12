@@ -7,6 +7,40 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Readdata {
+    public static void main(String[] args){
+        String start_time ="20160104",end_time = "20160505",symbol = "aap";
+        ArrayList<String> alldata = new ArrayList<String>();
+        ArrayList<Record> record_list = new ArrayList<Record>();
+        try {
+            alldata = readalldata(symbol, start_time, end_time);
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } catch (java.text.ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        for (String str : alldata) {
+            String[] str_list = str.split(",");
+            //String date, int time, float open, float high, float low, float close, float volume, float split_factor, float earnings, float dividends
+            record_list.add(new Record(str_list[0],
+                    Integer.parseInt(str_list[1]),
+                    Float.parseFloat(str_list[2]),
+                    Float.parseFloat(str_list[3])
+                    , Float.parseFloat(str_list[4])
+                    , Float.parseFloat(str_list[5])
+                    , Float.parseFloat(str_list[6])
+                    , Float.parseFloat(str_list[7])
+                    , Float.parseFloat(str_list[8])
+                    , Float.parseFloat(str_list[9])
+            ));
+        }
+
+        for (Record it : record_list){
+            System.out.println(it.toString());
+        }
+    }
 
     public static ArrayList<Record> acessDate(String start_time, String end_time, String symbol) {
         //String start_time ="20160104",end_time = "20160505",symbol = "a";
@@ -24,14 +58,14 @@ public class Readdata {
         }
         for (String str : alldata) {
             String[] str_list = str.split(",");
-            //String date, int time, float open, float high, float low, float close, long volume, float split_factor, float earnings, float dividends
+            //String date, int time, float open, float high, float low, float close, float volume, float split_factor, float earnings, float dividends
             record_list.add(new Record(str_list[0],
                     Integer.parseInt(str_list[1]),
                     Float.parseFloat(str_list[2]),
                     Float.parseFloat(str_list[3])
                     , Float.parseFloat(str_list[4])
                     , Float.parseFloat(str_list[5])
-                    , Long.parseLong(str_list[6])
+                    , Float.parseFloat(str_list[6])
                     , Float.parseFloat(str_list[7])
                     , Float.parseFloat(str_list[8])
                     , Float.parseFloat(str_list[9])

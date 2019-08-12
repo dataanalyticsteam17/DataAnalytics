@@ -3,11 +3,10 @@ package com.citi.dataanalytics.classes;
 public class Record {
     private String date;
     private int time;
-    private float open, high, low, close;
-    private long volume;
+    private float open, high, low, close, volume;
     private float split_factor, earnings, dividends;
 
-    public Record(String date, int time, float open, float high, float low, float close, long volume, float split_factor, float earnings, float dividends) {
+    public Record(String date, int time, float open, float high, float low, float close, float volume, float split_factor, float earnings, float dividends) {
         this.date = date;
         this.time = time;
         this.open = open;
@@ -68,11 +67,11 @@ public class Record {
         this.close = close;
     }
 
-    public long getVolume() {
+    public float getVolume() {
         return volume;
     }
 
-    public void setVolume(long volume) {
+    public void setVolume(float volume) {
         this.volume = volume;
     }
 
