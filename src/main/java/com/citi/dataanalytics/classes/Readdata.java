@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Readdata {
-
+public  static String abspath="C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\";
         public static void main(String[] args) throws IOException, java.text.ParseException{
         String start_time ="20160104",end_time = "20160104",symbol = "a";
         //ArrayList<Record> record_list = acessData("935","940",start_time ,end_time,symbol);
@@ -172,8 +172,7 @@ public class Readdata {
         while (start.before(end)|| start.equals(end)) {
             String reStr = sdf.format(start);
 
-            filepath = "C:\\Users\\Administrator\\Desktop\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
-                    + "allstocks_" + reStr + "\\table_" + symbol + ".csv";
+            filepath = abspath      + "allstocks_" + reStr + "\\table_" + symbol + ".csv";
 
             readCsv(allString,filepath);
             Calendar ca = Calendar.getInstance();
