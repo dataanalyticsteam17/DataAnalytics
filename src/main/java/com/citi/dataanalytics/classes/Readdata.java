@@ -37,9 +37,9 @@ public class Readdata {
             ));
         }
 
-        for (Record it : record_list){
-            System.out.println(it.toString());
-        }
+//        for (Record it : record_list){
+//            System.out.println(it.toString());
+//        }
     }
 
     public static ArrayList<Record> acessDate(String start_time, String end_time, String symbol) {
@@ -88,7 +88,7 @@ public class Readdata {
 
         while (start.before(end)) {
             String reStr = sdf.format(start);
-            String filepath = "C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
+            String filepath = "C:\\Users\\Administrator\\Desktop\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
                     + "allstocks_" + reStr + "\\table_" + symbol + ".csv";
             File isfile = new File(filepath);
             if (isfile.exists()) {

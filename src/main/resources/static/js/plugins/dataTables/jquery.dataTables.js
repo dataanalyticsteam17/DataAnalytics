@@ -10525,7 +10525,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "下一页",
+				"sNext": "Next",
 	
 	
 				/**
@@ -10548,7 +10548,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "上一页"
+				"sPrevious": "Previous"
 			},
 	
 			/**
@@ -10603,7 +10603,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "显示 _START_ 到 _END_ 项，共 _TOTAL_ 项",
+			"sInfo": "display _START_ to _END_ record，total _TOTAL_ record",
 	
 	
 			/**
@@ -10813,7 +10813,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "查找：",
+			"sSearch": "search：",
 	
 	
 			/**

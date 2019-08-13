@@ -76,6 +76,7 @@ public class TestController {
     }
 
     @RequestMapping("/selectStock")
+    @ResponseBody
     public String selectStock(@RequestParam(value = "stocks[]") ArrayList<String> stocks, HttpSession session) {
         session.setAttribute("stockList", stocks);
         return "home";
