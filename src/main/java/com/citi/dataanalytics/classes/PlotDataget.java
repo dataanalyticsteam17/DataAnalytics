@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class PlotDataget {
 
+
 //    public static void main(String[] args) throws IOException, java.text.ParseException{
 ////        String value_name="close",start_time = "20160104",symbol = "a";
 ////        String[][] result=getDataofday(value_name,start_time,symbol);
