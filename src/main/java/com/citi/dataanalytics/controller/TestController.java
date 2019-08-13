@@ -33,6 +33,9 @@ public class TestController {
     @RequestMapping("/select")
     public String select() {return "select";}
 
+    @RequestMapping("/plot")
+    public String plot() {return "plot";}
+
     @RequestMapping("/stock")
     @ResponseBody
     public  ArrayList<Record> getStocks(@RequestParam String start, @RequestParam String end, HttpSession session) {
@@ -46,6 +49,17 @@ public class TestController {
         }
         return records;
     }
+
+    @RequestMapping("/getStockData")
+    @ResponseBody
+    public String[][] getStockData(){
+        String[][] stockData=new String[][]{{"20120101","14"},{"20120201","17"},{"20120301","19"},{"20120401","20"},
+                {"20120501","18"},{"20120601","20"},{"20120701","19"},{"20120801","23"},
+                {"20120901","22"},{"20121001","24"},{"20121101","23"},{"20121201","25"}};
+//        System.out.println(stockData[0][0]);
+        return stockData;
+    }
+
 
     @RequestMapping("/getAllStockName")
     @ResponseBody
@@ -62,6 +76,7 @@ public class TestController {
     }
 
     @RequestMapping("/selectStock")
+    @ResponseBody
     public String selectStock(@RequestParam(value = "stocks[]") ArrayList<String> stocks, HttpSession session) {
         session.setAttribute("stockList", stocks);
         return "home";

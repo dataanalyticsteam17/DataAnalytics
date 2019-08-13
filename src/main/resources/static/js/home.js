@@ -3,7 +3,7 @@ $(document).ready(function(){
 });
 
 function init(){
-    var body="";
+    var body=""
     $("#stock-list").html(body);
     $.ajax({
         type: 'GET',
@@ -12,25 +12,28 @@ function init(){
         data:{start:"20160104",end:"20160106"},
         success: function (data) {
             $.each(data, function(i, item) {
-                body += "<tr>";
-                body += "<td>"+item.date+"</td>";
-                body += "<td>"+item.time+"</td>";
-                body += "<td>"+item.open+"</td>";
-                body += "<td>"+item.high+"</td>";
-                body += "<td>"+item.low+"</td>";
-                body += "<td>"+item.close+"</td>";
-                body += "<td>"+item.volume+"</td>";
-                body += "<td>"+item.split_factor+"</td>";
-                body += "<td>"+item.earnings+"</td>";
-                body += "<td>"+item.dividends+"</td>";
-                body += "</tr>";
+                body+="<tr>";
+                body+="<td>"+item.date+"</td>";
+                body+="<td>"+item.time+"</td>";
+                body+="<td>"+item.open+"</td>";
+                body+="<td>"+item.high+"</td>";
+                body+="<td>"+item.low+"</td>";
+                body+="<td>"+item.close+"</td>";
+                body+="<td>"+item.volume+"</td>";
+                body+="<td>"+item.split_factor+"</td>";
+                body+="<td>"+item.earnings+"</td>";
+                body+="<td>"+item.dividends+"</td>";
+                body+="</tr>"
             });
             $("#stock-list").append(body);
             $(".odd").remove();
+            $('#stock-table').dataTable();
         },
         error: function () {
 
         },
     });
 }
+
+
 

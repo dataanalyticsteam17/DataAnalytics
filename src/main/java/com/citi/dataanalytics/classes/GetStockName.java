@@ -34,7 +34,7 @@ public class GetStockName {
 //
     }
     public static ArrayList<String> getstock()throws IOException, java.text.ParseException{
-            String ps= "C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
+            String ps= "C:\\Users\\Administrator\\Desktop\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
             ArrayList<String> files = new ArrayList<String>();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             Date start = sdf.parse("20160101");
@@ -55,9 +55,9 @@ public class GetStockName {
             }
             removeDuplicateWithOrder(files);
             getchar(files);
-            for (String s:files){
-                System.out.println(s);
-            }
+//            for (String s:files){
+//                System.out.println(s);
+//            }
             return  files;
 
     }
@@ -87,7 +87,7 @@ public class GetStockName {
         }
         list.clear();
         list.addAll(newList);
-        System.out.println( " remove duplicate " + list);
+//        System.out.println( " remove duplicate " + list);
     }
     public static void getchar(ArrayList<String> fileNameList){
         ArrayList<String> newlist = new ArrayList();
