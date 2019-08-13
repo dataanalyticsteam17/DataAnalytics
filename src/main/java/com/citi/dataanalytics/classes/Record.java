@@ -1,10 +1,32 @@
 package com.citi.dataanalytics.classes;
 
 public class Record {
-    private String date;
+    private String stock_name, date;
     private int time;
     private float open, high, low, close, volume;
     private float split_factor, earnings, dividends;
+
+    public Record(String stock_name, String date, int time, float open, float high, float low, float close, float volume, float split_factor, float earnings, float dividends) {
+        this.stock_name = stock_name;
+        this.date = date;
+        this.time = time;
+        this.open = open;
+        this.high = high;
+        this.low = low;
+        this.close = close;
+        this.volume = volume;
+        this.split_factor = split_factor;
+        this.earnings = earnings;
+        this.dividends = dividends;
+    }
+
+    public String getStock_name() {
+        return stock_name;
+    }
+
+    public void setStock_name(String stock_name) {
+        this.stock_name = stock_name;
+    }
 
     public Record(String date, int time, float open, float high, float low, float close, float volume, float split_factor, float earnings, float dividends) {
         this.date = date;

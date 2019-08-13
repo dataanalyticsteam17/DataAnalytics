@@ -11,16 +11,21 @@ import java.util.Date;
 
 public class Readdata {
 
-    //    public static void main(String[] args) throws IOException, java.text.ParseException{
-//        String start_time ="20160104",end_time = "20160106",symbol = "a";
-//        //ArrayList<Record> record_list = accessData("935","940",start_time ,end_time,symbol);
-//        //ArrayList<Record> record_list = accessData(935,940,start_time ,end_time,symbol);
-//        //ArrayList<Record> record_list = accessData(start_time ,end_time,symbol);
+        public static void main(String[] args) throws IOException, java.text.ParseException{
+        String start_time ="20160104",end_time = "20160104",symbol = "a";
+        //ArrayList<Record> record_list = acessData("935","940",start_time ,end_time,symbol);
+        //ArrayList<Record> record_list = acessData(935,940,start_time ,end_time,symbol);
+//        ArrayList<Record> record_list = acessData(start_time ,end_time,symbol);
 //        //System.out.println(record_list.get(0).toString());
 //        for (Record r :record_list){
 //            System.out.println(r.toString());
 //        }
-//    }
+            ArrayList<String> record_list = Readdata.readData(start_time ,end_time,symbol);
+            //System.out.println(record_list.get(0).toString());
+            for (String r :record_list){
+                System.out.println(r);
+            }
+    }
     public static ArrayList<Record> acessData(int start_time, int end_timn, String start_date, String end_date,String symbol) throws IOException, java.text.ParseException{
         ArrayList<String> alldata , newlist= new  ArrayList<String>();
         ArrayList<Record> record_list = new ArrayList<Record>();
@@ -38,8 +43,9 @@ public class Readdata {
         alldata.clear();
         for (String str : newlist) {
             String[] str_list = str.split(",");
-            record_list.add(new Record(str_list[0],
-                    Integer.parseInt(str_list[1]),
+            record_list.add(new Record(symbol
+                    ,str_list[0]
+                    ,Integer.parseInt(str_list[1]),
                     Float.parseFloat(str_list[2]),
                     Float.parseFloat(str_list[3])
                     , Float.parseFloat(str_list[4])
@@ -102,7 +108,8 @@ public class Readdata {
         alldata.clear();
         for (String str : newlist) {
             String[] str_list = str.split(",");
-            record_list.add(new Record(str_list[0],
+            record_list.add(new Record(symbol,
+                    str_list[0],
                     Integer.parseInt(str_list[1]),
                     Float.parseFloat(str_list[2]),
                     Float.parseFloat(str_list[3])
@@ -137,7 +144,7 @@ public class Readdata {
 
         for (String str : alldata) {
             String[] str_list = str.split(",");
-            record_list.add(new Record(str_list[0],
+            record_list.add(new Record(symbol,str_list[0],
                     Integer.parseInt(str_list[1]),
                     Float.parseFloat(str_list[2]),
                     Float.parseFloat(str_list[3])
@@ -165,7 +172,7 @@ public class Readdata {
         while (start.before(end)|| start.equals(end)) {
             String reStr = sdf.format(start);
 
-            filepath = "C:\\Users\\Jiawei\\Desktop\\DataAnalytics\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
+            filepath = "C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
                     + "allstocks_" + reStr + "\\table_" + symbol + ".csv";
 
             readCsv(allString,filepath);
@@ -178,7 +185,7 @@ public class Readdata {
     }
 
     public static void readCsv( ArrayList<String> allString,String filepath)throws IOException  {
-        // ArrayList<String> allString = new ArrayList<String>();
+        //ArrayList<String> allString = new ArrayList<String>();
         if (new File(filepath).exists()) {
             CsvReader csvReader = new CsvReader(filepath, ' ', Charset.forName("UTF-8"));
             while (csvReader.readRecord()) {
