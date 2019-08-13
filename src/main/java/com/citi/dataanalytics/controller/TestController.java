@@ -36,15 +36,36 @@ public class TestController {
     @RequestMapping("/plot")
     public String plot() {return "plot";}
 
-    @RequestMapping("/stock")
+//    @RequestMapping("/stock")
+//    @ResponseBody
+//    public  ArrayList<Record> getStocks(@RequestParam String start, @RequestParam String end, HttpSession session) {
+//        ArrayList<String> stocks = (ArrayList<String>) session.getAttribute("stockList");
+//        ArrayList<Record> records = new ArrayList<>();
+//        for(String stock:stocks){
+//            ArrayList<Record> tmpRecord = Readdata. acessDate(start,end,stock);
+//            for(Record record:tmpRecord){
+//                records.add(record);
+//            }
+//        }
+//        return records;
+//    }
+
+    @RequestMapping("/getTheClose")
     @ResponseBody
-    public  ArrayList<Record> getStocks(@RequestParam String start, @RequestParam String end, HttpSession session) {
+    public ArrayList<Record> getTheClose(@RequestParam String startTime, @RequestParam String endTime, HttpSession session){
         ArrayList<String> stocks = (ArrayList<String>) session.getAttribute("stockList");
+        for(String stock:stocks){
+            System.out.print(stock);
+        }
         ArrayList<Record> records = new ArrayList<>();
         for(String stock:stocks){
-            ArrayList<Record> tmpRecord = Readdata. acessDate(start,end,stock);
-            for(Record record:tmpRecord){
-                records.add(record);
+            try {
+                ArrayList<Record> tmpRecord = Readdata. acessData(startTime ,endTime,stock);
+                for(Record record:tmpRecord){
+                    records.add(record);
+                }
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }
         return records;

@@ -7,9 +7,9 @@ function init(){
     $("#stock-list").html(body);
     $.ajax({
         type: 'GET',
-        url: '/stock',
+        url: '/getTheClose',
         dataType: 'json',
-        data:{start:"20160104",end:"20160106"},
+        data:{startTime:"20160104",endTime:"20160110"},
         success: function (data) {
             $.each(data, function(i, item) {
                 body+="<tr>";
