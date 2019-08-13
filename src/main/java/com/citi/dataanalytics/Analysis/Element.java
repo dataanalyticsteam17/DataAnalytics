@@ -9,6 +9,14 @@ public class Element {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "Element{" +
+                "value=" + value +
+                ", date='" + date + '\'' +
+                '}';
+    }
+
     public float getValue() {
         return value;
     }

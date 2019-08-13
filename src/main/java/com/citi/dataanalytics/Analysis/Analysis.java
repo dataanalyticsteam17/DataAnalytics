@@ -11,9 +11,9 @@ public class Analysis {
     Element low_price;
     float avg_price;
 
-    Element high_up;
-    Element  low_down;
-    float avg_change;
+    Element high_priceup;
+    Element  low_pricedown;
+    float avg_pricechange;
 
     Element high_diff;
     Element low_diff;
@@ -23,14 +23,14 @@ public class Analysis {
     Element low_volume;
     float avg_volume;
 
-    public Analysis(String stock_name, Element high_price, Element low_price, float avg_price, Element high_up, Element low_down, float avg_change, Element high_diff, Element low_diff, float avg_diff, Element high_volume, Element low_volume, float avg_volume) {
+    public Analysis(String stock_name, Element high_price, Element low_price, float avg_price, Element high_priceup, Element low_pricedown, float avg_pricechange, Element high_diff, Element low_diff, float avg_diff, Element high_volume, Element low_volume, float avg_volume) {
         this.stock_name = stock_name;
         this.high_price = high_price;
         this.low_price = low_price;
         this.avg_price = avg_price;
-        this.high_up = high_up;
-        this.low_down = low_down;
-        this.avg_change = avg_change;
+        this.high_priceup = high_priceup;
+        this.low_pricedown = low_pricedown;
+        this.avg_pricechange = avg_pricechange;
         this.high_diff = high_diff;
         this.low_diff = low_diff;
         this.avg_diff = avg_diff;
@@ -71,28 +71,28 @@ public class Analysis {
         this.avg_price = avg_price;
     }
 
-    public Element getHigh_up() {
-        return high_up;
+    public Element getHigh_priceup() {
+        return high_priceup;
     }
 
-    public void setHigh_up(Element high_up) {
-        this.high_up = high_up;
+    public void setHigh_priceup(Element high_priceup) {
+        this.high_priceup = high_priceup;
     }
 
-    public Element getLow_down() {
-        return low_down;
+    public Element getLow_pricedown() {
+        return low_pricedown;
     }
 
-    public void setLow_down(Element low_down) {
-        this.low_down = low_down;
+    public void setLow_pricedown(Element low_pricedown) {
+        this.low_pricedown = low_pricedown;
     }
 
-    public float getAvg_change() {
-        return avg_change;
+    public float getAvg_pricechange() {
+        return avg_pricechange;
     }
 
-    public void setAvg_change(float avg_change) {
-        this.avg_change = avg_change;
+    public void setAvg_pricechange(float avg_pricechange) {
+        this.avg_pricechange = avg_pricechange;
     }
 
     public Element getHigh_diff() {
@@ -141,5 +141,24 @@ public class Analysis {
 
     public void setAvg_volume(float avg_volume) {
         this.avg_volume = avg_volume;
+    }
+
+    @Override
+    public String toString() {
+        return "Analysis{" +
+                "stock_name='" + stock_name + '\'' +
+                ", high_price=" + high_price.toString() +
+                ", low_price=" + low_price.toString()+
+                ", avg_price=" + avg_price +
+                ", high_priceup=" + high_priceup.toString() +
+                ", low_pricedown=" + low_pricedown.toString() +
+                ", avg_pricechange=" + avg_pricechange +
+                ", high_diff=" + high_diff.toString() +
+                ", low_diff=" + low_diff.toString() +
+                ", avg_diff=" + avg_diff +
+                ", high_volume=" + high_volume.toString() +
+                ", low_volume=" + low_volume.toString() +
+                ", avg_volume=" + avg_volume +
+                '}';
     }
 }
