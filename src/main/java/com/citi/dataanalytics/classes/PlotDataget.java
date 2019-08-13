@@ -57,7 +57,4 @@ public class PlotDataget {
         }
     }
 
-//    public static String[][] getDataofall(){
-//        return null;
-//    }
 }

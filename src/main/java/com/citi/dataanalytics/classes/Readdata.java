@@ -191,7 +191,6 @@ public  static String abspath="C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analyt
                 allString.add(csvReader.get(0));
             }
         }
-        //System.out.println(allString.get(0).toString());
-        //System.out.println(allString.size());
+
     }
 }
