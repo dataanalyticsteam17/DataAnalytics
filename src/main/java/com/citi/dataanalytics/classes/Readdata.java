@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Readdata {
+
     //    public static void main(String[] args) throws IOException, java.text.ParseException{
 //        String start_time ="20160104",end_time = "20160106",symbol = "a";
 //        //ArrayList<Record> record_list = accessData("935","940",start_time ,end_time,symbol);
