@@ -41,14 +41,11 @@ function confirm(){
     $.ajax({
         type: 'GET',
         url: '/selectStock',
-        dataType: 'json',
         data:{stocks:array},
         success: function (data) {
-            console.log(123)
             window.location.href="home";
         },
         error: function (date) {
-            console.log("error",date)
             window.location.href="home";
         },
     });

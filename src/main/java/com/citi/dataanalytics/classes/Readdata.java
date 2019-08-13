@@ -172,7 +172,7 @@ public class Readdata {
         while (start.before(end)|| start.equals(end)) {
             String reStr = sdf.format(start);
 
-            filepath = "C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
+            filepath = "C:\\Users\\Administrator\\Desktop\\Quant Quote Market Data - Jan to Mar 2016\\"// the path of files
                     + "allstocks_" + reStr + "\\table_" + symbol + ".csv";
 
             readCsv(allString,filepath);

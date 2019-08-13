@@ -48,7 +48,7 @@ public class GetRecordByDay {
                     if (Float.parseFloat(ls.get(i).split(",")[4]) < low)
                         low = Float.parseFloat(ls.get(i).split(",")[4]);
                 }
-                records.add(new Record(sdf.format(start), 0, open, high, low, close, 0, 0, 0, 0));
+                records.add(new Record(symbol, sdf.format(start), 0, open, high, low, close, 0, 0, 0, 0));
             }
 
             Calendar ca = Calendar.getInstance();

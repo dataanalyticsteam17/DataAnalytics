@@ -1,5 +1,6 @@
 package com.citi.dataanalytics.controller;
 
+import com.citi.dataanalytics.classes.GetRecordByDay;
 import com.citi.dataanalytics.classes.GetStockName;
 import com.citi.dataanalytics.classes.Readdata;
 import com.citi.dataanalytics.classes.Record;
@@ -60,7 +61,25 @@ public class TestController {
         ArrayList<Record> records = new ArrayList<>();
         for(String stock:stocks){
             try {
-                ArrayList<Record> tmpRecord = Readdata. acessData(startTime ,endTime,stock);
+                ArrayList<Record> tmpRecord = GetRecordByDay. acessdatabyday(startTime ,endTime,stock);
+                for(Record record:tmpRecord){
+                    records.add(record);
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return records;
+    }
+
+    @RequestMapping("/getStockByTime")
+    @ResponseBody
+    public ArrayList<Record> getStockByTime(@RequestParam String startDate, @RequestParam String endDate, @RequestParam int startTime, @RequestParam int endTime, HttpSession session){
+        ArrayList<String> stocks = (ArrayList<String>) session.getAttribute("stockList");
+        ArrayList<Record> records = new ArrayList<>();
+        for(String stock:stocks){
+            try {
+                ArrayList<Record> tmpRecord = Readdata. acessData(startTime ,endTime,startDate, endDate, stock);
                 for(Record record:tmpRecord){
                     records.add(record);
                 }
