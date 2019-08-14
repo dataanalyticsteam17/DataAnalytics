@@ -10,7 +10,7 @@ public class PlotDatagetTest {
     @Rule
     public ExpectedException thrown= ExpectedException.none();
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void getPlotData() {
         String value_name = "Open Price", start_time = "20160104", end_time = "20160304", symbol = "a";
         String[][] as = PlotDataget.getPlotData(value_name,start_time,end_time,symbol);
