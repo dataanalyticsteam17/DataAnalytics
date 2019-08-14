@@ -1,5 +1,12 @@
 package com.citi.dataanalytics.controller;
 
+import com.citi.dataanalytics.Analysis.Analysis;
+import com.citi.dataanalytics.Analysis.AnalysisOperation;
+import com.citi.dataanalytics.Analysis.Element;
+import com.citi.dataanalytics.classes.GetRecordByDay;
+import com.citi.dataanalytics.classes.GetStockName;
+import com.citi.dataanalytics.classes.Readdata;
+import com.citi.dataanalytics.classes.Record;
 import com.citi.dataanalytics.classes.*;
 import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.LogManager;
@@ -127,6 +134,24 @@ public class TestController {
     public String selectStock(@RequestParam(value = "stocks[]") ArrayList<String> stocks, HttpSession session) {
         session.setAttribute("stockList", stocks);
         return "home";
+    }
+
+    @RequestMapping("/analytics")
+    public String analytics(){
+        return "analytics";
+    }
+
+    @RequestMapping("/analyticsStock")
+    @ResponseBody
+    public Analysis analyticsStock(@RequestParam String startDate, @RequestParam String endDate, @RequestParam String stockName){
+        try{
+            return AnalysisOperation.getAnalysis(startDate,endDate,stockName);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+        //Element element = new Element(1, "20110101");
+        //return new Analysis("abc", element, element, 1, element, element, 1, element, element, 1, element, element, 1);
     }
 
 }
