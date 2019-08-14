@@ -17,15 +17,15 @@ public class PlotDataget {
 //
 //   }
 
-    public static String[][] getDataofday(String value_name, String day,String symbol)throws IOException,java.text.ParseException{
-        ArrayList<String> ls= Readdata.readData(day,day,symbol);
+    public static String[][] getDataofday(String value_name, String day,String symbol)throws IOException,java.text.ParseException {
+        ArrayList<String> ls = Readdata.readData(day, day, symbol);
         if (ls.isEmpty()) return null;
         String[][] data = new String[ls.size()][2];
 
-        for (int i=0;i<ls.size();i++){
+        for (int i = 0; i < ls.size(); i++) {
             String[] str = ls.get(i).split(",");
-            data[i][0]=Readdata.implet_4bit_time(str[1]);
-            data[i][1]=str[return_index(value_name)];
+            data[i][0] = Readdata.implet_4bit_time(str[1]);
+            data[i][1] = str[return_index(value_name)];
 
         }
 

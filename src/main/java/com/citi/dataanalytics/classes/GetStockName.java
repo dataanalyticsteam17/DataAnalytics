@@ -34,7 +34,7 @@ public class GetStockName {
 //
     }
     public static ArrayList<String> getstock()throws IOException, java.text.ParseException{
-            String ps= "C:\\Users\\Administrator\\Desktop\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
+            String ps= "C:\\Users\\DELL\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
             ArrayList<String> files = new ArrayList<String>();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             Date start = sdf.parse("20160101");
