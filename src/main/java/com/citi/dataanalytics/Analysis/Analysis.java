@@ -1,9 +1,5 @@
 package com.citi.dataanalytics.Analysis;
 
-import com.citi.dataanalytics.entity.Stock;
-
-import java.util.ArrayList;
-
 public class Analysis {
     String stock_name;
 

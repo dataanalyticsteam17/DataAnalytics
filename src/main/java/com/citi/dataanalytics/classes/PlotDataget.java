@@ -1,33 +1,26 @@
 package com.citi.dataanalytics.classes;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlotDataget {
 
-    public static void main(String[] args) throws IOException, java.text.ParseException{
-        String value_name="Close Price",start_time = "20160108",symbol = "a";
-        String[][] result=getDataofday(value_name,start_time,symbol);
-       System.out.println(result[0][0]+" "+result[0][1]);
-
-//        String value_name="Open Price",start_time ="20160104",end_time = "20160104",symbol = "a";
-//        String[][] result=getDataoftime(value_name,start_time,end_time,symbol);
+//    public static void main(String[] args){
+////        String value_name="Close Price",start_time = "20160108",symbol = "a";
+////        String[][] result=getDataofday(value_name,start_time,symbol);
+////       System.out.println(result[0][0]+" "+result[0][1]);
 //
-//        System.out.println(result[result.length-1][0]+" "+result[result.length-1][1]);
-
-
-   }
-   public static String[][]getPlotData(String value_name, String start_date,String end_date,String symbol)
-           throws IOException,java.text.ParseException{
+////        String value_name="Open Price",start_time ="20160104",end_time = "20160104",symbol = "a";
+////        String[][] result=getDataoftime(value_name,start_time,end_time,symbol);
+////        System.out.println(result[result.length-1][0]+" "+result[result.length-1][1]);
+//   }
+   public static String[][]getPlotData(String value_name, String start_date,String end_date,String symbol) {
         if(start_date.equals(end_date)) return getDataofday(value_name,start_date,symbol);
         else return getDataoftime(value_name,start_date,end_date,symbol);
-
    }
 
-    public static String[][] getDataofday(String value_name, String day,String symbol)
-            throws IOException,java.text.ParseException{
+    public static String[][] getDataofday(String value_name, String day,String symbol) {
         ArrayList<String> ls= Readdata.readData(day,day,symbol);
-        if (ls.isEmpty()) return null;
+        //if (ls.isEmpty()) return null;
         String[][] data = new String[ls.size()][2];
 
         for (int i=0;i<ls.size();i++){
@@ -39,9 +32,9 @@ public class PlotDataget {
 
         return data;
     }
-    public static String[][] getDataoftime(String value_name,String start_date,String end_date,String symbol)throws IOException,java.text.ParseException{
+    public static String[][] getDataoftime(String value_name,String start_date,String end_date,String symbol){
         ArrayList<String> ls= Readdata.readData(start_date,end_date,symbol);
-        System.out.println(ls.isEmpty());
+        //System.out.println(ls.isEmpty());
         String[][] data = new String[ls.size()][2];
         for (int i=0;i<ls.size();i++){
             String[] str = ls.get(i).split(",");

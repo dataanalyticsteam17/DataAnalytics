@@ -1,76 +1,52 @@
 package com.citi.dataanalytics.classes;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class GetStockName {
-    public static void  main(String[] args )throws IOException, java.text.ParseException {
-//       String ps= "C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
-//       ArrayList<String> files = new ArrayList<String>();
-//       SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-//        Date start = sdf.parse("20160101");
-//        Date end = sdf.parse("20160630");
-//
-//
-//        while (start.before(end)) {
-//            String reStr = sdf.format(start);
-//            String filepath = ps + reStr ;
-//            File isfile = new File(filepath);
-//            if(isfile.exists()){
-//                getAllFileName(filepath, files);
-//            }
-//            Calendar ca = Calendar.getInstance();
-//            ca.setTime(start);
-//            ca.add(Calendar.DAY_OF_YEAR, 1);//day+1
-//            start = ca.getTime();
-//        }
-//         removeDuplicateWithOrder(files);
-//        getchar(files);
-//        for (String s:files){
+    public static String absPath="C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\" +
+            "Test Data\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
+
+//    public static void  main(String[] args ){
+//        ArrayList<String> ls = getstock();
+//        for (String s:ls){
 //            System.out.println(s);
 //        }
-//
-    }
-    public static ArrayList<String> getstock()throws IOException, java.text.ParseException{
-            String ps= "C:\\Users\\DELL\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
+//    }
+    public static ArrayList<String> getstock(){
             ArrayList<String> files = new ArrayList<String>();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-            Date start = sdf.parse("20160101");
-            Date end = sdf.parse("20160630");
+            try {
+                Date start = sdf.parse("20160101");
+                Date end = sdf.parse("20160630");
 
-
-            while (start.before(end)) {
-                String reStr = sdf.format(start);
-                String filepath = ps + reStr ;
-                File isfile = new File(filepath);
-                if(isfile.exists()){
-                    getAllFileName(filepath, files);
+                while (start.before(end)) {
+                    String reStr = sdf.format(start);
+                    String filepath = absPath + reStr ;
+                    File isfile = new File(filepath);
+                    if(isfile.exists()){
+                        getAllFileName(filepath, files);
+                    }
+                    Calendar ca = Calendar.getInstance();
+                    ca.setTime(start);
+                    ca.add(Calendar.DAY_OF_YEAR, 1);//day+1
+                    start = ca.getTime();
                 }
-                Calendar ca = Calendar.getInstance();
-                ca.setTime(start);
-                ca.add(Calendar.DAY_OF_YEAR, 1);//day+1
-                start = ca.getTime();
+            }catch (java.text.ParseException e){
+                System.out.println(e.getMessage());
             }
+
             removeDuplicateWithOrder(files);
             getchar(files);
-//            for (String s:files){
-//                System.out.println(s);
-//            }
             return  files;
 
     }
     public static void getAllFileName(String path, ArrayList<String> fileNameList) {
-
-        boolean flag = false;
         File file = new File(path);
         File[] tempList = file.listFiles();
-        //System.out.println(tempList.toString());
         for (int i = 0; i < tempList.length; i++) {
             if (tempList[i].isFile()) {
-             //System.out.println("文     件：" + tempList[i]);
-                //fileNameList.add(tempList[i].toString());
                 fileNameList.add(tempList[i].getName());
             }
         }
@@ -87,7 +63,6 @@ public class GetStockName {
         }
         list.clear();
         list.addAll(newList);
-//        System.out.println( " remove duplicate " + list);
     }
     public static void getchar(ArrayList<String> fileNameList){
         ArrayList<String> newlist = new ArrayList();
