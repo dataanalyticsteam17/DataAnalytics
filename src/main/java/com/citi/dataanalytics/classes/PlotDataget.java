@@ -41,9 +41,9 @@ public class PlotDataget {
             data[i][0]=str[0]+Readdata.implet_4bit_time(str[1]);
             data[i][1]=str[return_index(value_name)];
         }
-
         return data;
     }
+
     public static int return_index(String value_name){
         switch (value_name){
             case "Open Price" : return 2;

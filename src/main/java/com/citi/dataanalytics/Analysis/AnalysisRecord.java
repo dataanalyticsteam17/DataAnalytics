@@ -1,6 +1,7 @@
 package com.citi.dataanalytics.Analysis;
 
 public class AnalysisRecord {
+
     private String stock_name, date;
     private float open, high, low, close, volume;
     private float price_diff,max_min;

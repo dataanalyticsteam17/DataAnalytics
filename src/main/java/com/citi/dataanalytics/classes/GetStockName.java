@@ -42,6 +42,7 @@ public class GetStockName {
             return  files;
 
     }
+
     public static void getAllFileName(String path, ArrayList<String> fileNameList) {
         File file = new File(path);
         File[] tempList = file.listFiles();

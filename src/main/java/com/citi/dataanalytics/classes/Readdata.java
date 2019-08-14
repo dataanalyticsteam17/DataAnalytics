@@ -24,6 +24,7 @@ public  static String abspath="C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analyt
 //                System.out.println(r);
 //            }
 //    }
+
     public static ArrayList<Record> acessData(int start_time, int end_timn,String start_date,
                                               String end_date,String symbol) {
         ArrayList<String> alldata , newlist= new  ArrayList<String>();

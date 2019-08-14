@@ -22,10 +22,12 @@ public class GetRecordByDay {
 //    }
     public static ArrayList<Record> acessdatabyday(String start_date, String end_date,String symbol) {
         ArrayList<Record> records = new ArrayList<Record>();
+
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
             Date start = sdf.parse(start_date);
             Date end = sdf.parse(end_date);
+
             while (start.before(end) || start.equals(end)) {
                 // System.out.println(sdf.format(start));
                 ArrayList<String> ls = Readdata.readData(sdf.format(start), sdf.format(start), symbol);

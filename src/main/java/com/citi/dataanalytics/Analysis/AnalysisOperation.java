@@ -41,15 +41,16 @@ AnalysisRecord{stock_name='a', date='20160105', open=40.73, high=40.95, low=40.3
 ......
 * */
 public class AnalysisOperation {
-    public static void main(String[] args) {
-        String start_time = "20160104", end_time = "20160304", symbol = "a";
-//        Analysis analysis = getAnalysis(start_time,end_time,symbol);
-//        System.out.println(analysis.toString());
-        ArrayList<AnalysisRecord> ls = get_analysisrecord(start_time,end_time,symbol);
-        for (AnalysisRecord ar :ls){
-            System.out.println(ar.toString());
-        }
-    }
+
+//    public static void main(String[] args) {
+//        String start_time = "20160104", end_time = "20160304", symbol = "a";
+////        Analysis analysis = getAnalysis(start_time,end_time,symbol);
+////        System.out.println(analysis.toString());
+//        ArrayList<AnalysisRecord> ls = get_analysisrecord(start_time,end_time,symbol);
+//        for (AnalysisRecord ar :ls){
+//            System.out.println(ar.toString());
+//        }
+//    }
 
 
     public static Analysis getAnalysis(String start_date, String end_date,String symbol) {
