@@ -15,6 +15,7 @@ public class PlotDataget {
 //
 //        System.out.println(result[result.length-1][0]+" "+result[result.length-1][1]);
 
+
    }
    public static String[][]getPlotData(String value_name, String start_date,String end_date,String symbol)
            throws IOException,java.text.ParseException{
