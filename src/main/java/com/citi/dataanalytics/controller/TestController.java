@@ -2,6 +2,7 @@ package com.citi.dataanalytics.controller;
 
 import com.citi.dataanalytics.classes.GetRecordByDay;
 import com.citi.dataanalytics.classes.GetStockName;
+import com.citi.dataanalytics.classes.PlotDataget;
 import com.citi.dataanalytics.classes.Readdata;
 import com.citi.dataanalytics.classes.Record;
 import org.apache.commons.logging.Log;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,10 +94,11 @@ public class TestController {
 
     @RequestMapping("/getStockData")
     @ResponseBody
-    public String[][] getStockData(){
-        String[][] stockData=new String[][]{{"20120101","14"},{"20120201","17"},{"20120301","19"},{"20120401","20"},
-                {"20120501","18"},{"20120601","20"},{"20120701","19"},{"20120801","23"},
-                {"20120901","22"},{"20121001","24"},{"20121101","23"},{"20121201","25"}};
+    public String[][] getStockData()throws IOException, java.text.ParseException{
+//        String[][] stockData=new String[][]{{"20120101","14"},{"20120201","17"},{"20120301","19"},{"20120401","20"},
+//                {"20120501","18"},{"20120601","20"},{"20120701","19"},{"20120801","23"},
+//                {"20120901","22"},{"20121001","24"},{"20121101","23"},{"20121201","25"}};
+        String[][] stockData= PlotDataget.getDataoftime("Close Price","20160104","20160302","appl");
 //        System.out.println(stockData[0][0]);
         return stockData;
     }
