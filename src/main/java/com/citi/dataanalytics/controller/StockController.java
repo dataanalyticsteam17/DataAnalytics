@@ -13,6 +13,7 @@ import java.util.List;
 @Controller
 public class StockController {
 
+
     @RequestMapping("/getAllStockName")
     @ResponseBody
     public List<String> getAllStockName() {
