@@ -5,8 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class GetStockName {
-    public static String absPath="C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\" +
-            "Test Data\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
+    public static String absPath="C:\\Users\\DELL\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\allstocks_";
 
 //    public static void  main(String[] args ){
 //        ArrayList<String> ls = getstock();

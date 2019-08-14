@@ -15,7 +15,7 @@ import java.util.Date;
 * acessData(start_time ,end_time,symbol);
 * */
 public class Readdata {
-public  static String abspath="C:\\Users\\jw\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\";
+public  static String abspath="C:\\Users\\DELL\\Desktop\\DataAnalysis\\Data Analytics\\Test Data\\Quant Quote Market Data - Jan to Mar 2016\\";
 //    public static void main(String[] args){
 //        String start_time ="20160104",end_time = "20160104",symbol = "a";
 //        ArrayList<String> record_list = Readdata.readData(start_time ,end_time,symbol);
