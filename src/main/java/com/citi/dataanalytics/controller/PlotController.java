@@ -1,5 +1,6 @@
 package com.citi.dataanalytics.controller;
 
+import com.citi.dataanalytics.Analysis.AnalysisPlot;
 import com.citi.dataanalytics.classes.PlotDataget;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,5 +39,16 @@ public class PlotController {
             }
         }
         return stocksData;
+    }
+
+    @RequestMapping("/getAnalyticsData")
+    @ResponseBody
+    public Map<String,String[][]> getAnalyticsData(@RequestParam String stockSymbol, @RequestParam String startDate, @RequestParam String endDate) throws IOException,java.text.ParseException{
+        Map<String,String[][]> analyticsData=new HashMap<String,String[][]>();
+        String[][] priceChangeData=AnalysisPlot.getPriceChange(startDate,endDate,stockSymbol);
+        String[][] maxMinChangeData=AnalysisPlot.getMaxMinChange(startDate,endDate,stockSymbol);
+        analyticsData.put("Stock Advance-Decline",priceChangeData);
+        analyticsData.put("Stock High-Low",maxMinChangeData);
+        return analyticsData;
     }
 }
