@@ -77,12 +77,12 @@ $(function () {
                 console.log(stockSymbols);
                 stockData1=stockDatas[0];
                 stockSymbol1=stockSymbols[0];
-                stockData2=stockDatas[1];
+                stockData2=stockDatas[1]; /* Rory - NAMING!!*/
                 stockSymbol2=stockSymbols[1];
                 stockData3=stockDatas[2];
                 stockSymbol3=stockSymbols[2];
                 if(startDate==endDate){
-                    doPlot1($(this).text());
+                    doPlot1($(this).text()); /* eg OneDayPlot*/
                 }else{
                     doPlot2($(this).text());
                 }
