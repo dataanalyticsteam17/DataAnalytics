@@ -1,10 +1,13 @@
 package com.citi.dataanalytics.controller;
 
+import com.citi.dataanalytics.Analysis.Analysis;
+import com.citi.dataanalytics.Analysis.AnalysisOperation;
+import com.citi.dataanalytics.Analysis.Element;
 import com.citi.dataanalytics.classes.GetRecordByDay;
 import com.citi.dataanalytics.classes.GetStockName;
-import com.citi.dataanalytics.classes.PlotDataget;
 import com.citi.dataanalytics.classes.Readdata;
 import com.citi.dataanalytics.classes.Record;
+import com.citi.dataanalytics.classes.*;
 import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class TestController {
@@ -94,13 +99,19 @@ public class TestController {
 
     @RequestMapping("/getStockData")
     @ResponseBody
-    public String[][] getStockData()throws IOException, java.text.ParseException{
-//        String[][] stockData=new String[][]{{"20120101","14"},{"20120201","17"},{"20120301","19"},{"20120401","20"},
-//                {"20120501","18"},{"20120601","20"},{"20120701","19"},{"20120801","23"},
-//                {"20120901","22"},{"20121001","24"},{"20121101","23"},{"20121201","25"}};
-        String[][] stockData= PlotDataget.getDataoftime("Close Price","20160104","20160302","appl");
-//        System.out.println(stockData[0][0]);
-        return stockData;
+    public Map<String,String[][]> getStockData(@RequestParam String valueType,HttpSession session) throws IOException,java.text.ParseException{
+        System.out.println(valueType);
+        String value_name=valueType;  // Open Price,High Price,Low Price,Close Price,Volume
+        ArrayList<String> stocks = (ArrayList<String>) session.getAttribute("stockList");
+        String day="20160104";
+        Map<String,String[][]> stocksData=new HashMap<>();
+        for(int i=0;i<stocks.size();i++){
+            String stock_symbol=stocks.get(i);//Stock name
+            System.out.println("Stock symbol:"+stock_symbol);
+            String[][] singleStockData=PlotDataget.getDataofday(value_name,day,stock_symbol);
+            stocksData.put(stock_symbol,singleStockData);
+        }
+        return stocksData;
     }
 
 
@@ -123,6 +134,24 @@ public class TestController {
     public String selectStock(@RequestParam(value = "stocks[]") ArrayList<String> stocks, HttpSession session) {
         session.setAttribute("stockList", stocks);
         return "home";
+    }
+
+    @RequestMapping("/analytics")
+    public String analytics(){
+        return "analytics";
+    }
+
+    @RequestMapping("/analyticsStock")
+    @ResponseBody
+    public Analysis analyticsStock(@RequestParam String startDate, @RequestParam String endDate, @RequestParam String stockName){
+        try{
+            return AnalysisOperation.getAnalysis(startDate,endDate,stockName);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+        //Element element = new Element(1, "20110101");
+        //return new Analysis("abc", element, element, 1, element, element, 1, element, element, 1, element, element, 1);
     }
 
 }

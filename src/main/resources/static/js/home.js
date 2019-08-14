@@ -68,6 +68,7 @@ function confirm() {
         success: function (data) {
             $.each(data, function(i, item) {
                 body+="<tr>";
+                body+="<td>"+item.stock_name+"</td>";
                 body+="<td>"+item.date+"</td>";
                 body+="<td>"+item.time+"</td>";
                 body+="<td>"+item.open+"</td>";

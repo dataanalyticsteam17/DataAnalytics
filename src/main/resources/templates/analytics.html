@@ -58,13 +58,13 @@
                     <a href="index.html#"><i class="fa fa-table"></i> <span class="nav-label">Stock</span><span
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="active"><a href="select">Select</a>
+                        <li><a href="select">Select</a>
                         </li>
                         <li ><a href="home">Display</a>
                         </li>
                         <li><a href="plot">Plot</a>
                         </li>
-                        <li><a href="plot">Analysis</a>
+                        <li class="active"><a href="/analytics">Analysis</a>
                         </li>
                     </ul>
                 </li>
@@ -197,7 +197,7 @@
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12" id="analytics-content">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
                                     <h5>stock-list</h5>
@@ -222,35 +222,50 @@
                                 <div class="ibox-content">
 
                                     <div class="row">
-                                        <label class="col-sm-2 control-label">Select</label>
+                                        <form class="form-horizontal m-t">
+                                            <label class="col-sm-2 control-label">Select:</label>
 
-                                        <div class="col-sm-10">
-                                            <select class="form-control m-b" name="account" id="stock-list">
-                                                <option>选项 1</option>
-                                                <option>选项 2</option>
-                                                <option>选项 3</option>
-                                                <option>选项 4</option>
-                                            </select>
-                                        </div>
+                                            <div class="col-sm-10">
+                                                <select class="form-control m-b" name="account" id="stock-list">
+                                                    <option>选项 1</option>
+                                                    <option>选项 2</option>
+                                                    <option>选项 3</option>
+                                                    <option>选项 4</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                        <!--<label class="col-sm-2 control-label">Select</label>-->
+
+                                        <!--<div class="col-sm-10">-->
+                                            <!--<select class="form-control m-b" name="account" id="stock-list">-->
+                                                <!--<option>选项 1</option>-->
+                                                <!--<option>选项 2</option>-->
+                                                <!--<option>选项 3</option>-->
+                                                <!--<option>选项 4</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
                                     </div>
                                     <div class="row">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th>stock</th>
-                                                    <th>operation</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="selected-list">
-                                                <!--<tr>-->
-                                                    <!--<td>apple</td>-->
-                                                    <!--<td><a onclick="deleteTr(this)"><i class="fa fa-check text-navy"></i></a>-->
-                                                    <!--</td>-->
-                                                <!--</tr>-->
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <form class="form-horizontal m-t">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Start:</label>
+                                                <div class="col-sm-10">
+                                                    <input id="start-time" class="form-control layer-date" placeholder="YYYY-MM-DD hh:mm:ss"
+                                                           onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                                                    <label class="laydate-icon"></label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <form class="form-horizontal m-t">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">End:</label>
+                                                <div class="col-sm-10">
+                                                    <input id="end-time" class="form-control layer-date" placeholder="YYYY-MM-DD hh:mm:ss"
+                                                           onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                                                    <label class="laydate-icon"></label>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                     <div class="row">
                                         <button class="btn btn-sm btn-primary pull-right m-t-n-xs" onclick="confirm()"><strong>confirm</strong></button>
@@ -287,7 +302,10 @@
 <!-- Toastr script -->
 <script src="js/plugins/toastr/toastr.min.js"></script>
 
-<script src="js/select.js"></script>
+<!-- layerDate plugin javascript -->
+<script src="js/plugins/layer/laydate/laydate.js"></script>
+
+<script src="js/analytics.js"></script>
 
 <script type="text/javascript">
     $(function () {
@@ -382,6 +400,38 @@
             toastr.clear();
         });
     })
+    //外部js调用
+    laydate({
+        elem: '#hello', //目标元素。由于laydate.js封装了一个轻量级的选择器引擎，因此elem还允许你传入class、tag但必须按照这种方式 '#id .class'
+        event: 'focus' //响应事件。如果没有传入event，则按照默认的click
+    });
+
+    //日期范围限制
+    var start = {
+        elem: '#start',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        min: laydate.now(), //设定最小日期为当前日期
+        max: '2099-06-16 23:59:59', //最大日期
+        istime: true,
+        istoday: false,
+        choose: function (datas) {
+            end.min = datas; //开始日选好后，重置结束日的最小日期
+            end.start = datas //将结束日的初始值设定为开始日
+        }
+    };
+    var end = {
+        elem: '#end',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        min: laydate.now(),
+        max: '2099-06-16 23:59:59',
+        istime: true,
+        istoday: false,
+        choose: function (datas) {
+            start.max = datas; //结束日选好后，重置开始日的最大日期
+        }
+    };
+    laydate(start);
+    laydate(end);
 </script>
 
 </body>

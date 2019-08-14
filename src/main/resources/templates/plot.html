@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="renderer" content="webkit">
 
-    <title>素材火www.sucaihuo.com - Flot图表</title>
+    <title>plot</title>
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
@@ -32,19 +32,7 @@
                                 <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Beaut-zihan</strong>
                              </span>  <span class="text-muted text-xs block">User <b class="caret"></b></span> </span>
                             </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="form_avatar.html">修改头像</a>
-                                </li>
-                                <li><a href="profile.html">个人资料</a>
-                                </li>
-                                <li><a href="contacts.html">联系我们</a>
-                                </li>
-                                <li><a href="mailbox.html">信箱</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="login.html">安全退出</a>
-                                </li>
-                            </ul>
+
                         </div>
                         <div class="logo-element">
                             H+
@@ -55,11 +43,13 @@
                         <a href="index.html#"><i class="fa fa-table"></i> <span class="nav-label">Stock</span><span
                                 class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="home">display</a>
+                            <li><a href="select">Select</a>
+                            <li><a href="home">Display</a>
                             </li>
-                            <li class="active"><a href="select">select</a>
                             </li>
-                            <li class="active"><a href="plot">plot</a>
+                            <li class="active"><a href="plot">Plot</a>
+                            </li>
+                            <li><a href="/analytics">Analysis</a>
                             </li>
                         </ul>
                     </li>
@@ -169,6 +159,21 @@
                 </nav>
             </div>
             <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="ibox-content">
+                <div class="row">
+                    <label class="col-sm-2 control-label">Select</label>
+
+                    <div class="col-sm-10">
+                        <select class="form-control m-b" name="account" id="value-list">
+                            <option>Open Price</option>
+                            <option>High Price</option>
+                            <option>Low Price</option>
+                            <option>Close Price</option>
+                            <option>Volume</option>
+                        </select>
+                    </div>
+                </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
