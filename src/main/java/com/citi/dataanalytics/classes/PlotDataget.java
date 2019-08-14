@@ -41,7 +41,7 @@ public class PlotDataget {
     }
     public static String[][] getDataoftime(String value_name,String start_date,String end_date,String symbol)throws IOException,java.text.ParseException{
         ArrayList<String> ls= Readdata.readData(start_date,end_date,symbol);
-        System.out.println(ls.isEmpty());
+//        System.out.println(ls.isEmpty());
         String[][] data = new String[ls.size()][2];
         for (int i=0;i<ls.size();i++){
             String[] str = ls.get(i).split(",");

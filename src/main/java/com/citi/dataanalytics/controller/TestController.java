@@ -99,8 +99,10 @@ public class TestController {
 
     @RequestMapping("/getStockData")
     @ResponseBody
-    public Map<String,String[][]> getStockData(@RequestParam String valueType,HttpSession session) throws IOException,java.text.ParseException{
+    public Map<String,String[][]> getStockData(@RequestParam String valueType,@RequestParam String startDate,@RequestParam String endDate,HttpSession session) throws IOException,java.text.ParseException{
         System.out.println(valueType);
+        System.out.println(startDate);
+        System.out.println(endDate);
         String value_name=valueType;  // Open Price,High Price,Low Price,Close Price,Volume
         ArrayList<String> stocks = (ArrayList<String>) session.getAttribute("stockList");
         String day="20160104";
@@ -108,8 +110,17 @@ public class TestController {
         for(int i=0;i<stocks.size();i++){
             String stock_symbol=stocks.get(i);//Stock name
             System.out.println("Stock symbol:"+stock_symbol);
-            String[][] singleStockData=PlotDataget.getDataofday(value_name,day,stock_symbol);
-            stocksData.put(stock_symbol,singleStockData);
+            if(startDate.equals(endDate)){
+                //get one day   getDataofday(String value_name, String day,String symbol)
+                String[][] singleStockData=PlotDataget.getDataofday(value_name,startDate,stock_symbol);
+                System.out.println(singleStockData[0][0]+"  "+singleStockData[0][1]);
+                stocksData.put(stock_symbol,singleStockData);
+            }else{
+                //get several days
+                String[][] singleStockData=PlotDataget.getDataoftime(value_name,startDate,endDate,stock_symbol);
+                System.out.println(singleStockData[0][0]+"  "+singleStockData[0][1]);
+                stocksData.put(stock_symbol,singleStockData);
+            }
         }
         return stocksData;
     }
