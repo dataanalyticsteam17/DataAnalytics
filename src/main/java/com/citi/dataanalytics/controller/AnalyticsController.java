@@ -12,12 +12,7 @@ public class AnalyticsController {
 
     @RequestMapping("/analyticsStock")
     @ResponseBody
-    public Analysis analyticsStock(@RequestParam String startDate, @RequestParam String endDate, @RequestParam String stockName){
-        try{
-            return AnalysisOperation.getAnalysis(startDate,endDate,stockName);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
+    public Analysis analyticsStock(@RequestParam String startDate, @RequestParam String endDate, @RequestParam String stockName) {
+        return AnalysisOperation.getAnalysis(startDate, endDate, stockName);
     }
 }

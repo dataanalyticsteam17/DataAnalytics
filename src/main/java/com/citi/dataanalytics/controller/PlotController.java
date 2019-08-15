@@ -18,19 +18,15 @@ public class PlotController {
 
     @RequestMapping("/getStockData")
     @ResponseBody
-    public Map<String,String[][]> getStockData(@RequestParam String valueType, @RequestParam String startDate, @RequestParam String endDate, HttpSession session) throws IOException,java.text.ParseException{
-        System.out.println(valueType); // Open Price,High Price,Low Price,Close Price,Volume
-        System.out.println(startDate);
-        System.out.println(endDate);
+    public Map<String,String[][]> getStockData(@RequestParam String valueType, @RequestParam String startDate, @RequestParam String endDate, HttpSession session){
+//        System.out.println(valueType); // Open Price,High Price,Low Price,Close Price,Volume
         ArrayList<String> stocks = (ArrayList<String>) session.getAttribute("stockList");
         Map<String,String[][]> stocksData=new HashMap<String,String[][]>();
         for(int i=0;i<stocks.size();i++){
             String stock_symbol=stocks.get(i);
-            System.out.println("Stock symbol:"+stock_symbol);
             if(startDate.equals(endDate)){
                 //get one day data
                 String[][] singleStockData=PlotDataget.getDataofday(valueType,startDate,stock_symbol);
-                System.out.println(singleStockData[0][0]+"  "+singleStockData[0][1]);
                 stocksData.put(stock_symbol,singleStockData);
             }else{
                 //get several days data
@@ -43,7 +39,7 @@ public class PlotController {
 
     @RequestMapping("/getAnalyticsData")
     @ResponseBody
-    public Map<String,String[][]> getAnalyticsData(@RequestParam String stockSymbol, @RequestParam String startDate, @RequestParam String endDate) throws IOException,java.text.ParseException{
+    public Map<String,String[][]> getAnalyticsData(@RequestParam String stockSymbol, @RequestParam String startDate, @RequestParam String endDate){
         Map<String,String[][]> analyticsData=new HashMap<String,String[][]>();
         String[][] priceChangeData=AnalysisPlot.getPriceChange(startDate,endDate,stockSymbol);
         String[][] maxMinChangeData=AnalysisPlot.getMaxMinChange(startDate,endDate,stockSymbol);
